@@ -14,6 +14,7 @@ if not os.path.isdir(path):
 #Date Time Counter to append to filename
 start=datetime.datetime.now()
 
+
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter('%s/%s.avi' % (path, start.strftime("%y-%m-%d-%H-%M-%S")),fourcc, 20.0, (640,480))
