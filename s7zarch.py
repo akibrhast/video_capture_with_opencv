@@ -1,4 +1,4 @@
-
+#Change the values in CAPITALS
 # importing required modules 
 from zipfile import ZipFile 
 import os 
@@ -21,7 +21,7 @@ def get_all_file_paths(directory):
   
 def main(): 
     # path to folder which needs to be zipped 
-    directory = 'C:/Users/Rastakib/Desktop/VideoCapture/Version3.66Python/VideoCaptured'
+    directory = 'CHANGE ME1'
   
     # calling function to get all file paths in the directory 
     file_paths = get_all_file_paths(directory) 
@@ -32,13 +32,13 @@ def main():
         print(file_name) 
   
     # writing files to a zipfile 
-    with ZipFile('C:/Users/Rastakib/Desktop/VideoCapture/Version3.66Python/VideoCaptured.zip','w') as zip: 
+    with ZipFile('FULLPATH/NAMEOFFOLDER','w') as zip: 
         # writing each file one by one 
         for file in file_paths: 
             zip.write(file)
 			
 	#Deleting the File that has been Zipped
-    shutil.rmtree("C:/Users/Rastakib/Desktop/VideoCapture/Version3.66Python/VideoCaptured")
+    shutil.rmtree("CHANGE ME1")
   
     print('All files zipped successfully!')         
   
