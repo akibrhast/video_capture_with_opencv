@@ -32,16 +32,12 @@ while(True):
 			start=datetime.datetime.now()
 			out = cv2.VideoWriter('%s/%s.avi' % (path, start.strftime("%y-%m-%d-%H-%M-%S")),fourcc, 20.0, (640,480))
 			videoCounter+=1
-			#if(videoCounter > 3):
-			#	cam.release()
-			#	out.release()
-				#cv2.destroyAllWindows()
-			#	videoCounter=1
-				#zip_del()
-				#mail()
+
 	elif (videoCounter==3):
 		cam.release()
 		out.release()
+		zip_del()
+		mail()
 		videoCounter=1
 		out = cv2.VideoWriter('%s/%s.avi' % (path, start.strftime("%y-%m-%d-%H-%M-%S")),fourcc, 20.0, (640,480))
 		cam=cv2.VideoCapture(0)
