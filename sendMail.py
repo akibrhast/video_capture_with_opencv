@@ -1,14 +1,8 @@
-#!/usr/bin/env python
-# encoding: utf-8
-"""
-python_3_email_with_attachment.py
-Created by Robert Dempsey on 12/6/14.
-Copyright (c) 2014 Robert Dempsey. Use at your own peril.
 
-This script works with Python 3.x
+#This script works with Python 3.x
 
-NOTE: replace values in ALL CAPS with your own values
-"""
+#NOTE: replace values in ALL CAPS with your own values
+
 
 import os
 import smtplib
@@ -21,9 +15,9 @@ from zipfile import ZipFile
 COMMASPACE = ', '
 
 def main():
-    sender = 'akib.rhast@gmail.com'
-    gmail_password = 'ashik123ashik'
-    recipients = ['akib.rhast@gmail.com']
+    sender = 'YOUR EMAIL ADRESS'
+    gmail_password = 'YOUR PASSWORD'
+    recipients = ['LIST OF RECIPIENT SEPARATED BY COMMA']
     
     # Create the enclosing (outer) message
     outer = MIMEMultipart()
@@ -33,7 +27,7 @@ def main():
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
     # List of attachments
-    attachments = ['C:/Users/Rastakib/Desktop/VideoCapture/Version3.66Python/VideoCaptured.zip']
+    attachments = ['PATH OF ATTACHMENT(make sure its a archieved file)']
 
     # Add the attachments to the message
     for file in attachments:
@@ -58,7 +52,7 @@ def main():
             s.ehlo()
             s.login(sender, gmail_password)
             s.sendmail(sender, recipients, composed)
-            #s.close()
+            s.close()
         print("Email sent!")
     except:
         print("Unable to send the email. Error: ", sys.exc_info()[0])
