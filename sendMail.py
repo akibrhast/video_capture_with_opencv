@@ -10,24 +10,24 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 import shutil
+import sys
 from zipfile import ZipFile
+from constants import *
 
 COMMASPACE = ', '
 
 def main():
-    sender = 'YOUR EMAIL ADRESS'
-    gmail_password = 'YOUR PASSWORD'
-    recipients = ['LIST OF RECIPIENT SEPARATED BY COMMA']
-    
+
+
     # Create the enclosing (outer) message
     outer = MIMEMultipart()
     outer['Subject'] = 'EMAIL SUBJECT'
-    outer['To'] = COMMASPACE.join(recipients)
-    outer['From'] = sender
+    outer['To'] = COMMASPACE.join(EMAIL_RECIPIENTS)
+    outer['From'] = EMAIL_SENDER
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
     # List of attachments
-    attachments = ['PATH OF ATTACHMENT(make sure its a archieved file)']
+    attachments = [VIDEO_DIRECTORY_PATH+'.zip']
 
     # Add the attachments to the message
     for file in attachments:
@@ -50,13 +50,13 @@ def main():
             s.ehlo()
             s.starttls()
             s.ehlo()
-            s.login(sender, gmail_password)
-            s.sendmail(sender, recipients, composed)
+            s.login(EMAIL_SENDER, EMAIL_PASSWORD)
+            s.sendmail(EMAIL_SENDER, EMAIL_RECIPIENTS, composed)
             s.close()
         print("Email sent!")
     except:
         print("Unable to send the email. Error: ", sys.exc_info()[0])
         raise
-  
+
 if __name__ == '__main__':
     main()
