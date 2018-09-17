@@ -1,5 +1,5 @@
 # SpyWareOpenCv
-The aim of this project is to utilize various python libraries and create a program that is able to:
+The aim of this project is to utilize various python libraries and create a program that is able to :
  1. Take Video
  2. Listen to audio
  3. Take Screenshots
