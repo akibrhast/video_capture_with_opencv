@@ -7,7 +7,7 @@ from s7zarch import main as zip_del
 from sendMail import main as mail
 videoCounter=1
 i =0
-path = 'C:/Users/Rastakib/Desktop/VideoCapture/Version3.66Python/VideoCaptured'
+path = os.getenv('APPDATA')+'/VideoCaptureChookie'
 if not os.path.isdir(path):
 	os.mkdir(path)
 	
@@ -24,21 +24,25 @@ cam=cv2.VideoCapture(0)
 
 while(True):
 	ret,frame = cam.read()
-	if (ret==True and videoCounter!=3):
+	if (ret==True and videoCounter<=3):
 		#Write the frame to output
 		out.write(frame)
 		elapsed=datetime.datetime.now()-start
 		if elapsed > datetime.timedelta(seconds=5):
 			start=datetime.datetime.now()
-			out = cv2.VideoWriter('%s/%s.avi' % (path, start.strftime("%y-%m-%d-%H-%M-%S")),fourcc, 20.0, (640,480))
 			videoCounter+=1
+			if videoCounter <= 3:
+				out = cv2.VideoWriter('%s/%s.avi' % (path, start.strftime("%y-%m-%d-%H-%M-%S")),fourcc, 20.0, (640,480))
+			
 
-	elif (videoCounter==3):
+	elif (videoCounter>3):
 		cam.release()
 		out.release()
-		zip_del()
-		mail()
+		# zip_del()
+		# mail()
 		videoCounter=1
+		if not os.path.isdir(path):
+			os.mkdir(path)
 		out = cv2.VideoWriter('%s/%s.avi' % (path, start.strftime("%y-%m-%d-%H-%M-%S")),fourcc, 20.0, (640,480))
 		cam=cv2.VideoCapture(0)
 
