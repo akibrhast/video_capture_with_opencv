@@ -2,7 +2,7 @@ from constants import *
 import cv2
 import numpy
 import datetime, os
-from s7zarch import main as zip_del
+from archiever import main as zip_del
 from sendMail import main as mail
 videoCounter=1
 i =0
