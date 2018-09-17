@@ -22,18 +22,18 @@ cam=cv2.VideoCapture(0)
 
 while(True):
 	ret,frame = cam.read()
-	if (ret==True and videoCounter<=3):
+	if (ret==True and videoCounter<=VIDEO_COUNT):
 		#Write the frame to output
 		out.write(frame)
 		elapsed=datetime.datetime.now()-start
-		if elapsed > datetime.timedelta(seconds=5):
+		if elapsed > datetime.timedelta(seconds=VIDEO_LENGTH_SECONDS):
 			start=datetime.datetime.now()
 			videoCounter+=1
-			if videoCounter <= 3:
+			if videoCounter <= VIDEO_COUNT:
 				out = cv2.VideoWriter('%s/%s.avi' % (VIDEO_DIRECTORY_PATH, start.strftime("%y-%m-%d-%H-%M-%S")),fourcc, 20.0, (640,480))
 
 
-	elif (videoCounter>3):
+	elif (videoCounter>VIDEO_COUNT):
 		cam.release()
 		out.release()
 		zip_del()
