@@ -1,4 +1,3 @@
-#Change the values in CAPITALS
 # importing required modules
 from zipfile import ZipFile
 import os
@@ -38,7 +37,7 @@ def main():
         for file in file_paths:
             zip.write(file)
 
-	#Deleting the File that has been Zipped
+    #Deleting the File that has been Zipped
     shutil.rmtree(directory)
 
     print('All files zipped successfully!')
