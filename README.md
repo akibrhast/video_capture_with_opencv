@@ -1,9 +1,9 @@
 # SpyWareOpenCv
 The aim of this project is to utilize various python libraries and create a program that is able to :
- 1. Take Video
- 2. Listen to audio
+ 1. Take Video = Completed
+ 2. Listen to audio = Completed 
  3. Take Screenshots
- 4. Have the ability to send recorded files via email
+ 4. Have the ability to send recorded files via email = Completed
  5. Have the ability to be remotely turned on an off
  6. Remote live view
  7. Future abilities to be added as my programing skillz grow
